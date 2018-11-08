@@ -13,14 +13,14 @@
 import random
 
 
-def check(a, s, d, n):
-    """
-    перевірка одного свідка простоти
+def check(a: int, s: int, d: int, n: int) -> bool:
+    """ Перевірка одного свідка простоти.
+
     :param a: підозрілий свідок
     :param s: степінь двійки в простому розкладі n
     :param d: добуток простих чисел, відмінних від 2, з простого розкладу n
     :param n: число, яке перевіряється
-    :return:
+    :return: True - просйшов тест, False - ні
     """
     x = pow(a, d, n)     # піднесення до степеня по модулю
     if x == 1:
@@ -32,12 +32,12 @@ def check(a, s, d, n):
     return x == n - 1
 
 
-def miller_rabin_test(n, round_count):
+def miller_rabin_test(n: int, round_count: int) -> bool:
     """ Тест Міллера-Рабіна.
 
     :param n: число, яке тестується
     :param round_count: к-ть раундів
-    :return:
+    :return: True - вірогідно просте, False - точно складене
     """
     d = n - 1       # добуток простих дільників n, відмінних від 2
     s = 0           # степінь двійки у простому розкладі n
