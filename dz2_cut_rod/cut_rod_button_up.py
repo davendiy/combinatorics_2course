@@ -6,9 +6,10 @@
 # Taras Shevchenko National University of Kyiv
 # email: davendiy@gmail.com
 
+# A Dynamic Programming solution for Rod cutting problem with cost of cutting
+
 import random
 
-# A Dynamic Programming solution for Rod cutting problem with cost of cutting
 INT_MIN = -32767
 
 
