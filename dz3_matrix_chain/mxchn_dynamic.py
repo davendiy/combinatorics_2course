@@ -62,7 +62,7 @@ def get_answer(s, i, j, res: list):
     :return: None (array changes inside of function)
     """
     if i == j:
-        res.append('a[{}]'.format(i))    # on the main diagonal length of piece == 0, so matrix only one
+        res.append('a[{}]'.format(i-1))    # on the main diagonal length of piece == 0, so matrix only one
     else:
         res.append('(')                  # at the other places the internal block of matrix opens
         get_answer(s, i, s[i][j], res)
