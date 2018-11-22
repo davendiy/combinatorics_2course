@@ -6,13 +6,16 @@
 # Taras Shevchenko National University of Kyiv
 # email: davendiy@gmail.com
 
+""" A Dynamic Programming solution for Rod cutting problem with cost of cutting
+
+"""
+
 import random
 
-# A Dynamic Programming solution for Rod cutting problem with cost of cutting
 INT_MIN = -32767
 
 
-def cutRod(price, n, cut_cost):
+def cutrod_dynamic(price, n, cut_cost):
     """ Returns the best obtainable price for a rod of length n and
         price[] as prices of different pieces
 
@@ -42,20 +45,21 @@ def cutRod(price, n, cut_cost):
     return val[n], seq[n]
 
 
-# Driver program to test above functions
-size = 10
-cost_cut = random.randrange(size)
+if __name__ == '__main__':
+    # Driver program to test above functions
+    size = 10
+    cost_cut = random.randrange(size)
 
-arr = sorted([random.randrange(size * 10) for i in range(size)])
-res_val, res_seq = cutRod(arr, size, cost_cut)
-print("size: {}, \ncost of cut: {}, \narr: {}".format(size, cost_cut, arr))
-print("Maximum Obtainable Value is {},\nSequence of indexes: {}".format(res_val, res_seq))
+    arr = sorted([random.randrange(size * 10) for i in range(size)])
+    res_val, res_seq = cutrod_dynamic(arr, size, cost_cut)
+    print("size: {}, \ncost of cut: {}, \narr: {}".format(size, cost_cut, arr))
+    print("Maximum Obtainable Value is {},\nSequence of indexes: {}".format(res_val, res_seq))
 
-test = 0
-length = 0
-for index in res_seq:
-    test += arr[index] - cost_cut
-    length += index + 1
+    test = 0
+    length = 0
+    for index in res_seq:
+        test += arr[index] - cost_cut
+        length += index + 1
 
-print("test value: {}".format(test))
-print("test length: {}".format(length))
+    print("test value: {}".format(test))
+    print("test length: {}".format(length))

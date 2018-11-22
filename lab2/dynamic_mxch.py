@@ -7,13 +7,17 @@
 # email: davendiy@gmail.com
 # 19.11.18
 
-# Dynamic Programming Python implementation of Matrix
-# Chain Multiplication. See the Cormen book for details
-# of the following algorithm
 
-
-# Matrix Ai has dimension p[i-1] x p[i] for i = 1..n
 def MatrixChainOrder(p, n):
+    """ Dynamic Programming Python implementation of Matrix
+        Chain Multiplication. See the Cormen book for details
+        of the following algorithm
+
+    :param p: array of dimensions
+    :param n: length of matrix sequence
+    :return: minimum amount of elementary operations
+    """
+    # Matrix Ai has dimension p[i-1] x p[i] for i = 1..n
     # For simplicity of the program, one extra row and one
     # extra column are allocated in m[][].  0th row and 0th
     # column of m[][] are not used
