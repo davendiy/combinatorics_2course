@@ -21,8 +21,8 @@ def dynamic(a, b):
     m = len(a)
     n = len(b)
     val = [[0 for x in range(n)] for x in range(m)]
-    for i in range(m):
-        for j in range(n):
+    for i in range(1, m):
+        for j in range(1, n):
             if a[i] == b[j]:
                 val[i][j] = val[i-1][j-1] + 1
             else:
@@ -31,42 +31,20 @@ def dynamic(a, b):
     return val
 
 
-def dynamic2(a, b):
-    m = len(a)
-    n = len(b)
-    val = [[0 for i in range(n)] for i in range(m)]
-    seq = [[[] for i in range(n)] for i in range(m)]
-    for i in range(m):
-        for j in range(n):
-            if a[i] == b[j]:
-                val[i][j] = val[i-1][j-1] + 1
-                seq[i][j] = [*seq[i-1][j-1]] + [a[i]]
-            else:
-                val[i][j] = max(val[i-1][j], val[i][j-1])
-                if val[i-1][j] >= val[i][j-1]:
-                    seq[i][j] = seq[i-1][j]
-                else:
-                    seq[i][j] = seq[i][j-1]
-    # for line in val: print(line)
-    # print('\n\n')
-    # for line in seq: print(line)
-    return val, seq[m-1][n-1]
-
-
 def build_seq(matrix, a, b, i, j):
     if i == 0 or j == 0:
-        return ''
+        return a[0] if i == 0 else b[0]
     elif matrix[i][j] == matrix[i-1][j-1] + 1:
         return build_seq(matrix, a, b, i-1, j-1) + a[i]
-    elif matrix[i][j] == matrix[i][j-1]:
-        return build_seq(matrix, a, b, i, j-1)
     elif matrix[i][j] == matrix[i-1][j]:
         return build_seq(matrix, a, b, i-1, j)
+    elif matrix[i][j] == matrix[i-1][j]:
+        return build_seq(matrix, a, b, i, j-1)
 
 
 if __name__ == '__main__':
-    test_a = 'absdkf'
-    test_b = 'absadflaks'
+    test_a = 'absdssdsssssd'
+    test_b = 'absssssdddssssd'
     test_m = len(test_a)
     test_n = len(test_b)
 
@@ -76,10 +54,10 @@ if __name__ == '__main__':
     print(res[test_m-1][test_n-1])
     print(subseq)
 
-    for row in res:
-        print(' '.join(map(str, row)))
-
-    print()
-    test2, tmp = dynamic2(test_a, test_b)
-    for row in test2:
-        print(row)
+    # for row in res:
+    #     print(' '.join(map(str, row)))
+    #
+    # print()
+    # test2, tmp = dynamic2(test_a, test_b)
+    # for row in test2:
+    #     print(row)
