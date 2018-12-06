@@ -63,3 +63,13 @@ if __name__ == '__main__':
 
     print("test value: {}".format(test))
     print("test length: {}".format(length))
+
+    size = 8
+    # test_cost = random.randrange(size)
+    # valueList = sorted([random.randrange(size * 10) for j in range(size + 1)])
+    valueList = [3, 5, 8, 9, 10, 17, 19, 20]
+    test_cost = 1
+    test_memo = [-1 for k in range(size + 1)]
+    test_seq = [[] for k1 in range(size + 1)]
+
+    print(cutrod_dynamic(valueList, size, 1))
